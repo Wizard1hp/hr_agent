@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR AI Agent</title>
+    
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+<body>
+
+    <div id="particles-js"></div>
+
+    <div class="spinner-overlay" id="spinner">
+        <div class="spinner"></div>
+    </div>
+
+    <main>
+        <div class="logo"></div>
+        <h1>HR AI Agent</h1>
+        <p>Your intelligent assistant for resume screening and candidate ranking.</p>
+
+        <form id="upload-form">
+            <div class="form-group">
+                <label for="job-description" class="visually-hidden">Job Description</label>
+                <textarea id="job-description" name="job_description" rows="6" placeholder="Paste the job description here..." required></textarea>
+            </div>
+            <div class="form-group">
+                 <label for="resumes" class="visually-hidden">Upload Resumes</label>
+                <input type="file" id="resumes" name="resumes" accept=".pdf,.docx,.txt" multiple required>
+            </div>
+            
+            <button type="submit" id="submit-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M9.302 1.256a1.5 1.5 0 0 0-2.604 0l-1.704 2.952a.5.5 0 0 0 .434.748H6.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1h1.968a.5.5 0 0 0 .434-.748L9.302 1.256zM11.5 11a.5.5 0 0 0-.5-.5h-1v-1a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 0-.5.5v1h-1a.5.5 0 0 0-.5.5v1.293l-1.146 1.147a.5.5 0 0 0 .353.854h7.586a.5.5 0 0 0 .354-.854L12 12.293V11.5z"/>
+                </svg>
+                Process Candidates
+            </button>
+        </form>
+
+        <div id="view-schedules-section">
+            <button id="view-schedules-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
+                    <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z"/>
+                </svg>
+                View Scheduled Interviews
+            </button>
+        </div>
+
+        <div id="results-container"></div>
+        <div id="schedule-section" style="display: none;">
+            <button id="schedule-btn">Schedule Selected Interviews</button>
+        </div>
+        <div id="schedules-list-container"></div>
+    </main>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="{% static 'script.js' %}"></script>
+    <script>
+    // Particle.js Configuration
+    particlesJS("particles-js", {
+        "particles": {
+            "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+            "color": { "value": "#ffffff" },
+            "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 } },
+            "opacity": { "value": 0.5, "random": false, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } },
+            "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } },
+            "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 },
+            "move": { "enable": true, "speed": 6, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+            "modes": { "grab": { "distance": 400, "line_linked": { "opacity": 1 } }, "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } }
+        },
+        "retina_detect": true
+    });
+    </script>
+</body>
+</html>
